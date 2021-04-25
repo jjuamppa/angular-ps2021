@@ -7,7 +7,7 @@ import { ComofuncionaComponent } from './pages/comofunciona/comofunciona.compone
 import { ParticipantesComponent } from './pages/participantes/participantes.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { NopagefoundComponent } from './auth/nopagefound/nopagefound.component';
+import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { TengocomercioComponent } from './pages/tengocomercio/tengocomercio.component';
 import { PagesComponent } from './pages/pages.component';
 
