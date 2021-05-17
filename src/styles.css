@@ -6,3 +6,10 @@ footer {
     bottom: 0px;
     width: 100%;
 }
+
+#google-btn {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}

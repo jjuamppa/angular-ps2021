@@ -38,7 +38,7 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
     BrowserModule,
     AppRoutingModule,
     AutModule,
-    SharedModule,
+    SharedModule
   ],
   providers: [
   ],

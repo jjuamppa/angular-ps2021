@@ -1,49 +1,15 @@
-<div class="row row-cols-4 ">
+<div class="row row-cols-4 text-center ">
     <div class="col">
         <div class="card h-100">
             <img src="/assets/images/card.PNG" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Gift Card</h5>
                 <h1 class="text-center">$500</h1>
-                <button type="button" routerLink='500' class="btn btn-primary form-control ">
-                    Regalar
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100">
-            <img src="/assets/images/card.PNG" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Gift Card</h5>
-                <h1 class="text-center">$1000</h1>
-                <button type="button" [routerLink]="['1000']" class="btn btn-primary form-control">
-                    Regalar
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100">
-            <img src="/assets/images/card.PNG" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Gift Card</h5>
-                <h1 class="text-center">$2000</h1>
-                <button type="button" [routerLink]="['2000']" class="btn btn-primary form-control">
-                    Regalar
-                </button>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card h-100">
-            <img src="/assets/images/card.PNG" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Gift Card</h5>
-                <h1 class="text-center">$10000</h1>
-                <button type="button" class="btn btn-primary form-control">
-                    Regalar
-                </button>
+                <form action="http://localhost:3005/checkout" method="POST">
+                    <input type="hidden" name="price" value="2500">
+                    <input type="hidden" name="title" value="GiftCard">
+                    <input type="submit" value="Pagar" class="btn btn-primary form-control ">
+                </form>
             </div>
         </div>
     </div>
