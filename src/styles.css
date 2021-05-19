@@ -13,3 +13,10 @@ footer {
     text-align: center;
     display: flex;
 }
+
+.fast {
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
