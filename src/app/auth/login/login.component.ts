@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, NgZone, OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
               private fb: FormBuilder,
-              private usuarioServices: UsuarioService  ) { }
+              private usuarioServices: UsuarioService,
+              private ngZone: NgZone  ) { }
   ngOnInit(): void {
 this.renderButton();  }
 
@@ -66,22 +67,23 @@ gapi.load('auth2', () => {
 }
 
 attachSignin(element): void {
-  this.auth2.attachClickHandler(element, {},
-      (googleUser) => {
-        const id_token = googleUser.getAuthResponse().id_token;
-        // console.log(id_token);
-        this.usuarioServices.loginGoogle(id_token)
-          .subscribe( resp => {
-          // Navegar al dasboard
-          this.router.navigateByUrl('/');
-          });
 
-        // Navegar al dasboard
-        this.router.navigateByUrl('/');
-      },
-      (error) => {
-        alert(JSON.stringify(error, undefined, 2));
+  this.auth2.attachClickHandler( element, {},
+      (googleUser) => {
+          const id_token = googleUser.getAuthResponse().id_token;
+          // console.log(id_token);
+          this.usuarioServices.loginGoogle( id_token )
+            .subscribe( resp => {
+              // Navegar al Dashboard
+              this.ngZone.run( () => {
+                this.router.navigateByUrl('/');
+              });
+            });
+
+      }, (error) => {
+          alert(JSON.stringify(error, undefined, 2));
       });
 }
 
 }
+

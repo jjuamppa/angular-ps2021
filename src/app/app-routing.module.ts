@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
+
 import { HomeComponent } from './public-pages/home/home.component';
 import { AboutComponent } from './public-pages/about/about.component';
 import { ComofuncionaComponent } from './public-pages/comofunciona/comofunciona.component';
@@ -33,8 +34,8 @@ export const routes: Routes = [
 
       {path: '',
       component: PagesComponent,
-      //   canActivate: [AuthGuard],
-     children: [
+      canActivate: [AuthGuard],
+      children: [
       {path: 'dashboard', component: DashboardComponent },
       {path: 'progress', component: ProgressComponent },
       {path: 'grafica1', component: Grafica1Component },

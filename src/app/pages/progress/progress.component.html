@@ -1,1 +1,38 @@
-<p>progress works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-tittle"> Selecciones el valor de su GifCard</h4>
+                <div class="progress-bar bg-primary active progress-bar-striped" [style.width]="getPorcentaje" style="height: 20px;" role="progressbar">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" (click)="cambiaValor(-10)">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </span>
+                    <input type="text" class="form-control" placeholder="Valor en $"> $ {{getPorcentaje}}
+                    <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" (click)="cambiaValor(10)">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </span>
+                </div>
+            </div>
+            <form action="http://localhost:3005/checkout" method="POST">
+                <input type="hidden" name="price" value="2500">
+                <input type="hidden" name="title" value="GiftCard">
+                <input type="submit" value="Regalar" class="btn btn-outline-primary form-control ">
+            </form>
+        </div>
+    </div>
+</div>

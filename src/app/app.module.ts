@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './public-pages/home/home.component';
@@ -18,7 +20,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PagesComponent } from './pages/pages.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { PublicPagesComponent } from './public-pages/public-pages.component';
-
 
 // Servicios
 
@@ -40,12 +41,16 @@ import { PublicPagesComponent } from './public-pages/public-pages.component';
     BrowserModule,
     AppRoutingModule,
     AutModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+  ],
+  exports: [
   ],
   providers: [
   ],
   bootstrap: [AppComponent],
 })
+
 export class AppModule { }
 
 
