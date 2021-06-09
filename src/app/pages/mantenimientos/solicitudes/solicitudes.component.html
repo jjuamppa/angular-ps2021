@@ -1,26 +1,10 @@
-<!-- <div class="row">
-    <div class="col-4">
-        <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active">Tecnologia</a>
-            <a class="list-group-item">Epoka</a>
-            <a class="list-group-item">Petenatti</a>
-            <a class="list-group-item">Roverval</a>
-            <a class="list-group-item">Agricola Jose Verra</a>
-        </div>
-        <button type="button" class="btn btn-outline-primary form-control">
-            Ver Mas...
-        </button>
-    </div>
-</div> -->
-
-
 <div class="row animated fadeIn fast">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
 
-                <input type="text" class="form-control" placeholder="Buscar Comercio" />
-                <!-- <input type="text" class="form-control" placeholder="Buscar Comercio" (keyup)="buscar( txtTermino.value )" #txtTermino/> -->
+                <input type="text" class="form-control" placeholder="Buscar Solicitud" />
+                <!-- <input type="text" class="form-control" placeholder="Buscar Solicitud" (keyup)="buscar( txtTermino.value )" #txtTermino/> -->
 
             </div>
         </div>
@@ -41,29 +25,32 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <!-- <h4 class="card-title">Total de Comercios ( ) </h4> -->
-                <h4 class="card-title">Total de Comercios ( {{comercios.length}} ) </h4>
+                <h4 class="card-title">Total de Solicitudes ( {{solicitudes.length}} ) </h4>
                 <!-- <h4 class="card-title">Total de usuarios ( {{ totalUsuarios }} ) - {{desde}}</h4> -->
-                <h6 class="card-subtitle">Comercios Participantes</h6>
+                <h6 class="card-subtitle">Solicitudes Ingresadas</h6>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Correo</th>
                                 <th>Direccion</th>
+                                <th class="w100">Telefono</th>
+                                <th class="text-nowrap w100">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <tr>
-                                    <tr *ngFor="let comercio of comercios">
-                                        <td>{{comercio.nombre}}</td>
-                                        <td>{{comercio.direccion}}</td>
-                                        <!-- <td>{{comercio.nombre}}</td>
-                                    <td>{{comercio.email}}</td>
-                                    <td>{{comercio.direccion}}</td>
-                                    <td>{{comercio.telefono}}</td> -->
-                                    </tr>
+                                <tr *ngFor="let solicitud of solicitudes">
+                                    <td>{{solicitud.nombre}}</td>
+                                    <td>{{solicitud.email}}</td>
+                                    <td>{{solicitud.direccion}}</td>
+                                    <td>{{solicitud.telefono}}</td>
+                                    <td class="text-nowrap text-center">
+                                        <a class="cursor" (click)="eliminarSolicitud(solicitud)" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
+                                        <!-- <a class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a> -->
+                                    </td>
+                                </tr>
                         </tbody>
                     </table>
                 </div>

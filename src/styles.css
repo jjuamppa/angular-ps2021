@@ -24,3 +24,29 @@ footer {
 .cursor {
     cursor: pointer;
 }
+
+.img-avatar {
+    width: 200px;
+    height: 200px;
+}
+
+.w100 {
+    width: 100px;
+}
+
+.w101 {
+    width: 120px;
+}
+
+.w140 {
+    width: 140px;
+}
+
+.avatar {
+    width: 30px;
+    border-radius: 100%;
+}
+
+.sidebarColor {
+    background-color: #1671DF;
+}

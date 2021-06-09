@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import {CommonModule} from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+
+
 
 
 import { HomeComponent } from './public-pages/home/home.component';
@@ -18,28 +22,32 @@ import { ProgressComponent } from './pages/progress/progress.component';
 import { Grafica1Component } from './pages/grafica1/grafica1.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { PublicPagesComponent } from './public-pages/public-pages.component';
+import { PerfilComponent } from './pages/perfil/perfil.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UsuariosComponent } from './pages/mantenimientos/usuarios/usuarios.component';
+import { ComerciosComponent } from './pages/mantenimientos/comercios/comercios.component';
+import { TransaccionesComponent } from './pages/mantenimientos/transacciones/transacciones.component';
+import { SolicitudesComponent } from './pages/mantenimientos/solicitudes/solicitudes.component';
 
 export const routes: Routes = [
-    // {path: '',
-    //   component: PagesComponent,
-    // children: [
-      //   {path: 'header', component: HeaderComponent },
-      //   {path: 'comofunciona', component: ComofuncionaComponent },
-      //   {path: 'home', component: HomeComponent},
-      //   {path: 'about', component: AboutComponent },
-      //   {path: 'participantes', component: ParticipantesComponent },
-      //   {path: 'tengocomercio', component: TengocomercioComponent },
-      //   {path: '' , pathMatch: 'full', redirectTo: 'home' },
-      // ]},
 
       {path: '',
       component: PagesComponent,
       canActivate: [AuthGuard],
       children: [
-      {path: 'dashboard', component: DashboardComponent },
-      {path: 'progress', component: ProgressComponent },
-      {path: 'grafica1', component: Grafica1Component },
-      {path: '' , pathMatch: 'full', redirectTo: '/dashboard' },
+      {path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'} },
+      {path: 'regalar', component: ProgressComponent, data: {titulo: 'Regalar'} },
+      {path: 'grafica1', component: Grafica1Component, data: {titulo: 'Grafica #1'} },
+      {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil del Usuario'} },
+      {path: '' , pathMatch: 'full', redirectTo: '/regalar' },
+
+      // Mantenimientos
+      {path: 'usuarios' , component: UsuariosComponent, data: {titulo: 'Usuario de apliciacion'} },
+      {path: 'comercios' , component: ComerciosComponent, data: {titulo: 'Mant de Comercios'} },
+      {path: 'transacciones' , component: TransaccionesComponent, data: {titulo: 'Mant de Transacciones'} },
+      {path: 'solicitudes' , component: SolicitudesComponent, data: {titulo: 'Mant de Solicitudes'} },
+
+
   ] },
 
   {path: '',
@@ -50,7 +58,7 @@ export const routes: Routes = [
        {path: 'about', component: AboutComponent },
        {path: 'participantes', component: ParticipantesComponent },
        {path: 'tengocomercio', component: TengocomercioComponent },
-      {path: '' , pathMatch: 'full', redirectTo: '/home' },
+       {path: '' , pathMatch: 'full', redirectTo: '/home' },
   ] },
 
     {path: 'login', component: LoginComponent },
@@ -63,11 +71,22 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [],
+    declarations: [
+
+    ],
     imports: [
-      RouterModule.forRoot( routes )
+      RouterModule.forRoot( routes ),
+      ReactiveFormsModule,
+      FormsModule,
+      BrowserModule,
+      CommonModule,
+
+
+
     ],
     exports: [ RouterModule],
+
+
   })
   export class AppRoutingModule { }
 

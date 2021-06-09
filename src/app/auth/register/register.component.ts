@@ -14,10 +14,10 @@ export class RegisterComponent {
   public formSumitted = false;
 
   public registerForm = this.fb.group( {
-    nombre: ['jualio', Validators.required],
-    email: ['jualio@jualio.com', [Validators.required, Validators.email]],
-    password: ['123456', Validators.required],
-    password2: ['123456', Validators.required],
+    nombre: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
+    password2: ['', Validators.required],
     terminos: [true, Validators.required],
   }, {
     validators: this.passwordsIguales('password', 'password2')
