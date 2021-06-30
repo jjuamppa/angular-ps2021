@@ -1,30 +1,59 @@
 <div class="row text-center">
-    <div class="col-12 text-center">
-        <div class="card text-center">
+    <div class="col-6 text-center ">
+        <div class="card text-center celeste">
             <div class="card-body text-center">
-                <h2> Selecciones el valor de su GifCard</h2>
-                <img src="../../../assets/images/card.PNG" alt="">
+                <h2> Pagar Ahora con Mercadopago</h2>
+                <h3> Selecciones el valor de su GifCard</h3>
+                <img width="59%" src="../../../assets/logoNegro.PNG" alt="" class="fotoGift">
                 <br><br>
                 <form action="http://localhost:3005/checkout" method="POST">
-                    <input (click)="progreso" class="col-12" type="range" name="price" [value]="getPrecio" min="0" max="10000" step="100">
+                    <input (click)="progreso" class="col-9" type="range" name="price" [value]="getPrecio" min="0" max="10000" step="100">
                     <br><br>
-                    <div class="input-group col-6 text-center">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" (click)="cambiaValor(-100)">
+                    <div class="input-group col-12 text-center">
+                        <div class="input-group-btn">
+                            <button class="btn btn-dark" type="button" (click)="cambiaValor(-100)">
                                 <i class="fa fa-minus"></i>
                             </button>
-                        </span>
-                        <label type="text" class="form-control">AR$ {{progreso}}</label>
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button" (click)="cambiaValor(100)">
+                        </div>
+                        <label type="text" class="form-control text-center">AR$ {{getPrecio}}</label>
+                        <div class="input-group-btn">
+                            <button class="btn btn-dark" type="button" (click)="cambiaValor(100)">
                                 <i class="fa fa-plus"></i>
                             </button>
-                        </span>
+                        </div>
                     </div>
-                    <input type="hidden" name="" value="2500">
-                    <input type="hidden" name="title" value="GiftCard front">
+                    <input type="hidden" name="title" value="GiftCard">
                     <br>
-                    <input type="submit" value="Regalar" class="btn btn-primary col-4">
+                    <input type="submit" value="Pagar" class="btn btn-dark col-6">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card text-center">
+            <div class="card-body text-center celeste">
+                <h2> Pagar cuando recibo en mi domicilio</h2>
+
+                <form>
+                    <div class="mb-3 ">
+                        <label>Direccion</label>
+                        <input type="text " class="form-control " placeholder="Direccion... " formControlName="direccion">
+                    </div>
+                    <div class="mb-3 ">
+                        <label>Telefono</label>
+                        <input type="text " class="form-control " placeholder="Telefono... " formControlName="telefono">
+                    </div>
+                    <div class="mb-3 ">
+                        <label>Monto de tu GiftCard</label>
+                        <input type="text " class="form-control " placeholder="Monto en AR$... " formControlName="monto">
+                    </div>
+                    <div class="mb-3 ">
+                        <label>Horario de entrega</label>
+                        <input type="email " class="form-control " placeholder="Horario de entrega... " formControlName="horario">
+                    </div>
+                    <div class="form-group text-center ">
+                        <button [disabled]="" type="submit " class="btn btn-dark col-6 ">Solicitar</button>
+                    </div>
                 </form>
             </div>
         </div>

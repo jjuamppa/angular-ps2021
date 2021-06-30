@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TerminosComponent } from './terminos/terminos.component';
 
 
 
@@ -12,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     LoginComponent,
     RegisterComponent,
+    TerminosComponent,
     ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
   exports: [
     LoginComponent,
     RegisterComponent,
+    TerminosComponent
   ]
 })
 export class AutModule { }

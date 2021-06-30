@@ -14,6 +14,9 @@ import { PagesComponent } from './pages.component';
 import { ComerciosComponent } from './mantenimientos/comercios/comercios.component';
 import { TransaccionesComponent } from './mantenimientos/transacciones/transacciones.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { DonaComponent } from '../components/dona/dona.component';
+import { DetalleComponent } from './detalle/detalle.component';
+import { MisComprasComponent } from './mis-compras/mis-compras.component';
 
 
 
@@ -23,16 +26,17 @@ import { Ng5SliderModule } from 'ng5-slider';
     Grafica1Component,
     PagesComponent,
     ProgressComponent,
-
-
-
+    DonaComponent,
+    DetalleComponent,
 
   ],
   exports: [
 
     Grafica1Component,
     PagesComponent,
-    ProgressComponent
+    ProgressComponent,
+    DonaComponent
+
 
 
   ],

@@ -28,6 +28,11 @@ import { UsuariosComponent } from './pages/mantenimientos/usuarios/usuarios.comp
 import { ComerciosComponent } from './pages/mantenimientos/comercios/comercios.component';
 import { TransaccionesComponent } from './pages/mantenimientos/transacciones/transacciones.component';
 import { SolicitudesComponent } from './pages/mantenimientos/solicitudes/solicitudes.component';
+import { PregFrecuentesComponent } from './public-pages/pregFrecuentes/pregFrecuentes.component';
+import { TerminosComponent } from './auth/terminos/terminos.component';
+import { ReportesComponent } from './pages/mantenimientos/reportes/reportes.component';
+import { DetalleComponent } from './pages/detalle/detalle.component';
+import { MisComprasComponent } from './pages/mis-compras/mis-compras.component';
 
 export const routes: Routes = [
 
@@ -37,8 +42,10 @@ export const routes: Routes = [
       children: [
       {path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'} },
       {path: 'regalar', component: ProgressComponent, data: {titulo: 'Regalar'} },
+      {path: 'misCompras', component: MisComprasComponent, data: {titulo: 'Mis Compras'} },
       {path: 'grafica1', component: Grafica1Component, data: {titulo: 'Grafica #1'} },
       {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil del Usuario'} },
+      {path: 'detalle', component: DetalleComponent, data: {titulo: 'Detalle de su compra'} },
       {path: '' , pathMatch: 'full', redirectTo: '/regalar' },
 
       // Mantenimientos
@@ -46,6 +53,7 @@ export const routes: Routes = [
       {path: 'comercios' , component: ComerciosComponent, data: {titulo: 'Mant de Comercios'} },
       {path: 'transacciones' , component: TransaccionesComponent, data: {titulo: 'Mant de Transacciones'} },
       {path: 'solicitudes' , component: SolicitudesComponent, data: {titulo: 'Mant de Solicitudes'} },
+      {path: 'reportes' , component: ReportesComponent, data: {titulo: 'Reportes Generales'} },
 
 
   ] },
@@ -58,11 +66,13 @@ export const routes: Routes = [
        {path: 'about', component: AboutComponent },
        {path: 'participantes', component: ParticipantesComponent },
        {path: 'tengocomercio', component: TengocomercioComponent },
+       {path: 'pregFrecuentes', component: PregFrecuentesComponent },
        {path: '' , pathMatch: 'full', redirectTo: '/home' },
   ] },
 
     {path: 'login', component: LoginComponent },
     {path: 'register', component: RegisterComponent },
+    {path: 'terminosycondiciones', component: TerminosComponent },
 
     {path: 'header', component: HeaderComponent },
     {path: 'navbar', component: NavbarComponent },

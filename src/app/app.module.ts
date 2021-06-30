@@ -32,6 +32,10 @@ import { TransaccionesComponent } from './pages/mantenimientos/transacciones/tra
 import { ProgressComponent } from './pages/progress/progress.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SolicitudesComponent } from './pages/mantenimientos/solicitudes/solicitudes.component';
+import { PregFrecuentesComponent } from './public-pages/pregFrecuentes/pregFrecuentes.component';
+import { ReportesComponent } from './pages/mantenimientos/reportes/reportes.component';
+import { DonaComponent } from './components/dona/dona.component';
+import { MisComprasComponent } from './pages/mis-compras/mis-compras.component';
 
 // Servicios
 
@@ -52,11 +56,10 @@ import { SolicitudesComponent } from './pages/mantenimientos/solicitudes/solicit
     UsuariosComponent,
     ComerciosComponent,
     TransaccionesComponent,
-    SolicitudesComponent
-
-
-
-
+    SolicitudesComponent,
+    PregFrecuentesComponent,
+    ReportesComponent,
+    MisComprasComponent
 
   ],
   imports: [

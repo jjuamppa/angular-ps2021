@@ -1,4 +1,5 @@
 import { Component} from '@angular/core';
+import { Usuario } from 'src/app/models/usuario.model';
 
 @Component({
   selector: 'app-progress',
@@ -8,7 +9,6 @@ import { Component} from '@angular/core';
 export class ProgressComponent {
 
 progreso = 7000;
-
 
 get getPrecio(): number {
   return this.progreso;

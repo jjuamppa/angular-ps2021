@@ -64,7 +64,7 @@ googleInit(): void {
 
     this.auth2.signOut().then(() => {
       this.ngZone.run(() => {
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/home');
       });
    });
   }
