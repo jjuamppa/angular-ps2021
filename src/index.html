@@ -25,7 +25,6 @@
 
     <!-- SDK MercadoPago.js V2 -->
     <script src="https://sdk.mercadopago.com/js/v2"></script>
-
     <!-- Custom CSS -->
     <link href="./assets/css/style.css" rel="stylesheet">
 
@@ -35,14 +34,14 @@
 
     <script>
         // Agrega credenciales de SDK
-        const mp = new MercadoPago('PUBLIC_KEY', {
+        const mp = new MercadoPago('TEST-6eb90ed5-d929-4408-88f7-8f2fc618b350', {
             locale: 'es-AR'
         });
 
         // Inicializa el checkout
         mp.checkout({
             preference: {
-                id: 'YOUR_PREFERENCE_ID'
+                id: '000001'
             },
             render: {
                 container: '.cho-container', // Indica dónde se mostrará el botón de pago

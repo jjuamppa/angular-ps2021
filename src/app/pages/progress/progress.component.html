@@ -1,10 +1,10 @@
-<div class="row text-center">
-    <div class="col-6 text-center ">
+<div class="celeste">
+    <div class="col-6 container ">
         <div class="card text-center celeste">
             <div class="card-body text-center">
                 <h2> Pagar Ahora con Mercadopago</h2>
-                <h3> Selecciones el valor de su GifCard</h3>
-                <img width="59%" src="../../../assets/logoNegro.PNG" alt="" class="fotoGift">
+                <h3>(Selecciones el valor de su GifCard)</h3>
+                <img width="60%" src="../../../assets/logoNegro.PNG" alt="" class="fotoGift">
                 <br><br>
                 <form action="http://localhost:3005/checkout" method="POST">
                     <input (click)="progreso" class="col-9" type="range" name="price" [value]="getPrecio" min="0" max="10000" step="100">
@@ -22,38 +22,11 @@
                             </button>
                         </div>
                     </div>
+                    <input type="hidden" name="fecha" [value]="hoy">
+                    <input type="hidden" name="id" value="60f8318970549e0a34ba78fc">
                     <input type="hidden" name="title" value="GiftCard">
                     <br>
                     <input type="submit" value="Pagar" class="btn btn-dark col-6">
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="col-6">
-        <div class="card text-center">
-            <div class="card-body text-center celeste">
-                <h2> Pagar cuando recibo en mi domicilio</h2>
-
-                <form>
-                    <div class="mb-3 ">
-                        <label>Direccion</label>
-                        <input type="text " class="form-control " placeholder="Direccion... " formControlName="direccion">
-                    </div>
-                    <div class="mb-3 ">
-                        <label>Telefono</label>
-                        <input type="text " class="form-control " placeholder="Telefono... " formControlName="telefono">
-                    </div>
-                    <div class="mb-3 ">
-                        <label>Monto de tu GiftCard</label>
-                        <input type="text " class="form-control " placeholder="Monto en AR$... " formControlName="monto">
-                    </div>
-                    <div class="mb-3 ">
-                        <label>Horario de entrega</label>
-                        <input type="email " class="form-control " placeholder="Horario de entrega... " formControlName="horario">
-                    </div>
-                    <div class="form-group text-center ">
-                        <button [disabled]="" type="submit " class="btn btn-dark col-6 ">Solicitar</button>
-                    </div>
                 </form>
             </div>
         </div>

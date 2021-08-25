@@ -19,7 +19,7 @@ import { PagesComponent } from './pages/pages.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ProgressComponent } from './pages/progress/progress.component';
-import { Grafica1Component } from './pages/grafica1/grafica1.component';
+import { EnviargiftComponent } from './pages/enviargift/enviargift.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { PublicPagesComponent } from './public-pages/public-pages.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
@@ -33,6 +33,8 @@ import { TerminosComponent } from './auth/terminos/terminos.component';
 import { ReportesComponent } from './pages/mantenimientos/reportes/reportes.component';
 import { DetalleComponent } from './pages/detalle/detalle.component';
 import { MisComprasComponent } from './pages/mis-compras/mis-compras.component';
+import { AdminGuard } from './guards/admin.guard';
+import { EnvioComponent } from './pages/mantenimientos/envio/envio.component';
 
 export const routes: Routes = [
 
@@ -43,17 +45,18 @@ export const routes: Routes = [
       {path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'} },
       {path: 'regalar', component: ProgressComponent, data: {titulo: 'Regalar'} },
       {path: 'misCompras', component: MisComprasComponent, data: {titulo: 'Mis Compras'} },
-      {path: 'grafica1', component: Grafica1Component, data: {titulo: 'Grafica #1'} },
+      {path: 'grafica1', component: EnviargiftComponent, data: {titulo: 'Envio de Gift'} },
       {path: 'perfil', component: PerfilComponent, data: {titulo: 'Perfil del Usuario'} },
       {path: 'detalle', component: DetalleComponent, data: {titulo: 'Detalle de su compra'} },
       {path: '' , pathMatch: 'full', redirectTo: '/regalar' },
 
-      // Mantenimientos
-      {path: 'usuarios' , component: UsuariosComponent, data: {titulo: 'Usuario de apliciacion'} },
-      {path: 'comercios' , component: ComerciosComponent, data: {titulo: 'Mant de Comercios'} },
-      {path: 'transacciones' , component: TransaccionesComponent, data: {titulo: 'Mant de Transacciones'} },
-      {path: 'solicitudes' , component: SolicitudesComponent, data: {titulo: 'Mant de Solicitudes'} },
-      {path: 'reportes' , component: ReportesComponent, data: {titulo: 'Reportes Generales'} },
+      // Mantenimientos solo admin
+      {path: 'usuarios' , canActivate: [ AdminGuard ], component: UsuariosComponent, data: {titulo: 'Usuario de apliciacion'} },
+      {path: 'comercios' , canActivate: [ AdminGuard ], component: ComerciosComponent, data: {titulo: 'Mant de Comercios'} },
+      {path: 'transacciones' , canActivate: [ AdminGuard ],  component: TransaccionesComponent, data: {titulo: 'Mant de Transacciones'} },
+      {path: 'solicitudes' , canActivate: [ AdminGuard ],  component: SolicitudesComponent, data: {titulo: 'Mant de Solicitudes'} },
+      {path: 'reportes' , canActivate: [ AdminGuard ],  component: ReportesComponent, data: {titulo: 'Reportes Generales'} },
+      {path: 'envio' , canActivate: [ AdminGuard ],  component: EnvioComponent, data: {titulo: 'Solicitud de Envio'} },
 
 
   ] },

@@ -40,6 +40,10 @@ get uid(): string {
 return this.usuario.uid || '';
 }
 
+get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
+  return this.usuario.role;
+}
+
 get headers(): any {
 return {
  headers: {
@@ -59,8 +63,14 @@ googleInit(): void {
 
 }
 
+guardarLocalStorage(token: string, menu: any): void {
+      localStorage.setItem('token', token);
+      localStorage.setItem('menu', JSON.stringify(menu) );
+}
+
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('menu');
 
     this.auth2.signOut().then(() => {
       this.ngZone.run(() => {
@@ -79,7 +89,7 @@ googleInit(): void {
 
       const {email, google, password, nombre, img = '', role, uid } = resp.usuario;
       this.usuario = new Usuario(google, email, '', nombre, img, role, uid);
-      localStorage.setItem('token', resp.token);
+      this.guardarLocalStorage(resp.token, resp.menu);
       return true;
 
   }),
@@ -91,7 +101,7 @@ crearUsuario( formData: RegisterForm ): any {
   return this.http.post(`${base_url}/usuarios`, formData)
                   .pipe(
                   tap( (resp: any) => {
-                  localStorage.setItem('token', resp.token);
+                  this.guardarLocalStorage(resp.token, resp.menu);
                   })
                   );
 }
@@ -108,7 +118,7 @@ login( formData: LoginForm ): any {
   return this.http.post(`${base_url}/login`, formData)
                   .pipe(
                   tap( (resp: any) => {
-                  localStorage.setItem('token', resp.token);
+                  this.guardarLocalStorage(resp.token, resp.menu);
                   })
                   );
 }
@@ -117,16 +127,16 @@ loginGoogle( token ): any {
   return this.http.post(`${base_url}/login/google`, {token})
                   .pipe(
                   tap( (resp: any) => {
-                  localStorage.setItem('token', resp.token);
+                  this.guardarLocalStorage(resp.token, resp.menu);
                   })
                   );
 }
 
 
- cargarUsuarios(desde: number = 0): any {
-    const url = `${base_url}/usuarios?desde=${ desde }`;
-    return this.http.get<CargarUsuario>(url, this.headers);
-   }
+  cargarUsuarios(desde: number = 0): any {
+     const url = `${base_url}/usuarios?desde=${ desde }`;
+     return this.http.get<CargarUsuario>(url, this.headers);
+    }
 
 
  eliminarUsuario( usuario: Usuario ): any {

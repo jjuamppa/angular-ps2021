@@ -29,13 +29,12 @@ import { UsuariosComponent } from './pages/mantenimientos/usuarios/usuarios.comp
 import { HttpClientModule } from '@angular/common/http';
 import { ComerciosComponent } from './pages/mantenimientos/comercios/comercios.component';
 import { TransaccionesComponent } from './pages/mantenimientos/transacciones/transacciones.component';
-import { ProgressComponent } from './pages/progress/progress.component';
-import { Ng5SliderModule } from 'ng5-slider';
 import { SolicitudesComponent } from './pages/mantenimientos/solicitudes/solicitudes.component';
 import { PregFrecuentesComponent } from './public-pages/pregFrecuentes/pregFrecuentes.component';
 import { ReportesComponent } from './pages/mantenimientos/reportes/reportes.component';
-import { DonaComponent } from './components/dona/dona.component';
 import { MisComprasComponent } from './pages/mis-compras/mis-compras.component';
+import { EnvioComponent } from './pages/mantenimientos/envio/envio.component';
+import { EnviargiftComponent } from './pages/enviargift/enviargift.component';
 
 // Servicios
 
@@ -59,7 +58,11 @@ import { MisComprasComponent } from './pages/mis-compras/mis-compras.component';
     SolicitudesComponent,
     PregFrecuentesComponent,
     ReportesComponent,
-    MisComprasComponent
+    MisComprasComponent,
+    EnvioComponent,
+    EnviargiftComponent
+
+
 
   ],
   imports: [

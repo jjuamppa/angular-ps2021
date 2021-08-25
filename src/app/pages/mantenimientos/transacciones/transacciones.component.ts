@@ -43,7 +43,7 @@ export class TransaccionesComponent implements OnInit {
 
   Swal.fire({
     title: '¿Borrar transaccion?',
-    text: `Esta a punto de borrar a ${ transaccion.uid }`,
+    text: `Esta a punto de borrar a ${ transaccion.usuario.nombre }, $${ transaccion.monto }`,
     icon: 'question',
     showCancelButton: true,
     confirmButtonText: 'Si, borrarlo'

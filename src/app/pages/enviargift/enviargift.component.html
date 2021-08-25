@@ -1,0 +1,36 @@
+<div class="celeste">
+    <div class="col-6 container">
+        <div class="card text-center celeste">
+            <div class="card-body text-center ">
+                <h2> Recibir mi Gift en Casa</h2>
+                <h3>(Pagar cuando recibo en mi domicilio)</h3>
+
+                <form [formGroup]="regalarEnCasaForm" (submit)="enviar()">
+                    <div class="mb-3 ">
+                        <label>Direccion de entrega</label>
+                        <input type="text " class="form-control " placeholder="Direccion... " formControlName="direccion">
+                    </div>
+                    <div class="mb-3 ">
+                        <label>Telefono de quien recibe</label>
+                        <input type="text " class="form-control " placeholder="Telefono... " formControlName="telefono">
+                    </div>
+                    <div class="mb-3 ">
+                        <label>Email</label>
+                        <input type="email " class="form-control " placeholder="XXX@... " formControlName="email">
+                    </div>
+                    <div class="mb-3 ">
+                        <label>Monto de tu GiftCard</label>
+                        <input type="number" maxlength="4" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="0" max="9999" class="form-control " placeholder="Monto en AR$... " formControlName="monto">
+                    </div>
+                    <div class="mb-3 ">
+                        <label>Fecha de entrega</label>
+                        <input type="date" class="form-control " placeholder="Horario de entrega... " formControlName="fecha">
+                    </div>
+                    <div class="form-group text-center ">
+                        <button [disabled]="" type="submit " class="btn btn-dark col-6 ">Solicitar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

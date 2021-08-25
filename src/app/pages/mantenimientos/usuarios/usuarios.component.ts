@@ -42,8 +42,9 @@ export class UsuariosComponent implements OnInit {
   }
 
 
-  cambiarPagina( valor: number ): void {
+  cambiarPagina( valor: number ): any {
     this.desde += valor;
+
     if ( this.desde < 0 ) {
       this.desde = 0;
     } else if ( this.desde >= this.totalUsuarios ) {

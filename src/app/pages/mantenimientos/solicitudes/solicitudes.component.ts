@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Solicitud } from 'src/app/models/solicitud.model';
 import Swal from 'sweetalert2';
 import { ComercioService } from '../../../services/comercio.service';
+import { BusquedasService } from '../../../services/busquedas.service';
 
 @Component({
   selector: 'app-solicitudes',
@@ -17,30 +18,58 @@ export class SolicitudesComponent implements OnInit {
   public solicitudes: Solicitud[] = [];
   public solicitudesTemp: Solicitud[] = [];
 
-
+  public totalSolicitudes = 0;
+  public desde = 0;
 
 
   constructor( private fb: FormBuilder,
-               private solicitudesServices: ComercioService ) { }
+               private solicitudesServices: ComercioService,
+               private busquedasService: BusquedasService ) { }
 
   ngOnInit(): void {
     this.cargarSolicitudes();
   }
 
-cargarSolicitudes(): any {
+// cargarSolicitudes(): any {
 
-  this.cargando = true,
-  this.solicitudesServices.cargarSolicitudes()
-  .subscribe( solicitudes => {
-    this.cargando = false;
-    this.solicitudes = solicitudes;
-});
+//   this.cargando = true,
+//   this.solicitudesServices.cargarSolicitudes()
+//   .subscribe( solicitudes => {
+//     this.cargando = false;
+//     this.solicitudes = solicitudes;
+// });
+// }
+
+guardarCambios( solicitud: Solicitud ): any {
+  this.solicitudesServices.actualizarSolicitud( solicitud.uid, solicitud.nombre, solicitud.email, solicitud.direccion, solicitud.telefono )
+      .subscribe( resp => {
+        Swal.fire( 'Actualizado', solicitud.nombre, 'success' );
+      });
 }
 
- buscar( termino: string ): any {
-    if ( termino.length === 0 ) {
-      return this.solicitudes = this.solicitudesTemp;
-    }
+cargarSolicitudes(): void {
+  this.cargando = true;
+  this.solicitudesServices.cargarSolicitudes( this.desde )
+    .subscribe( ({ total, solicitudes }) => {
+      this.totalSolicitudes = total;
+      this.solicitudes = solicitudes;
+      this.solicitudesTemp = solicitudes;
+      this.cargando = false;
+  });
+}
+
+buscar( termino: string ): any {
+
+  if ( termino.length === 0 ) {
+    return this.cargarSolicitudes();
+  }
+
+  this.busquedasService.buscar( 'solicitudes', termino )
+      .subscribe( resp => {
+
+        this.solicitudes = resp;
+
+      });
 }
 
 eliminarSolicitud( solicitud: Solicitud ): void {
@@ -63,10 +92,19 @@ Swal.fire({
           `${ solicitud.nombre } fue eliminado correctamente`,
           'success'
         );
-
       });
-
   }
 });
+}
+
+cambiarPagina( valor: number ): any {
+  this.desde += valor;
+
+  if ( this.desde < 0 ) {
+    this.desde = 0;
+  } else if ( this.desde >= this.totalSolicitudes ) {
+    this.desde -= valor;
+  }
+  this.cargarSolicitudes();
 }
 }

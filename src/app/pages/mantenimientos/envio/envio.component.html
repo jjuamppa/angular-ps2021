@@ -1,0 +1,165 @@
+<!-- <div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" class="form-control" placeholder="Buscar Solicitud" (keyup)="buscar( txtTermino.value )" #txtTermino/>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Total de Solicitudes ( {{envios.length}} ) </h4>
+                 <h4 class="card-title">Total de usuarios ( {{ totalUsuarios }} ) - {{desde}}</h4> 
+                <h6 class="card-subtitle">Solicitudes Ingresadas</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Direccion</th>
+                                <th>Telefono</th>
+                                <th>Fecha</th>
+                                <th>Correo</th>
+                                <th>Monto</th>
+                                <th class="text-nowrap w100">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <tr *ngFor="let envio of envios">
+                                    <td>{{envio.direccion}}</td>
+                                    <td>{{envio.telefono}}</td>
+                                    <td>{{envio.fecha | date:'dd-MM-yyyy'}}</td>
+                                    <td>{{envio.email}}</td>
+                                    <td>{{envio.monto}}</td>
+                                    <td class="text-nowrap text-center">
+                                        <a class="cursor" (click)="eliminarEnvio(envio)" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
+                                         <a class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a> 
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="txtTermino.value.length === 0">
+                    <div>
+                         <button (click)="cambiarPagina(-5)" class="btn btn-secondary">Anteriores</button> &nbsp; 
+                        <button class="btn btn-secondary">Anteriores</button> &nbsp;
+                         <button (click)="cambiarPagina(+5)" class="btn btn-secondary">Sigueintes</button>
+                        <button class="btn btn-secondary">Sigueintes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+
+<div class="row animated fadeIn fast">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input type="text" class="form-control" placeholder="Buscar envios..." #txtTermino (keyup)="buscar(txtTermino.value)" />
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn fast" *ngIf="cargando">
+    <div class="col-12">
+
+        <div class="alert alert-info text-center">
+            <h4 class="alert-heading">Cargando</h4>
+            <i class="fa fa-spin fa-refresh fa-2x"></i>
+            <p class="mb-0">Por favor espere</p>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row" *ngIf="!cargando">
+
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-8">
+                        <h4 class="card-title">Total de Solicitudes de envio ( {{ totalEnvios }} ) - {{desde}}</h4>
+                        <h6 class="card-subtitle">
+                            Solicitudes de envio registrados en mi aplicación
+                        </h6>
+                    </div>
+
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Direccion</th>
+                                <th>Correo</th>
+                                <th>Telefono</th>
+                                <th>Fecha</th>
+                                <th class="text-nowrap w100">Monto</th>
+                                <th class="text-nowrap w100">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let envio of envios">
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Nombre del comercio" [(ngModel)]="envio.direccion" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Correo" [(ngModel)]="envio.email" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Telefono del comercio" [(ngModel)]="envio.telefono" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Telefono del comercio" [(ngModel)]="envio.fecha" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Telefono del comercio" [(ngModel)]="envio.monto" />
+                                </td>
+
+                                <td class="text-nowrap text-center">
+                                    <a (click)="guardarCambios(envio)" data-toggle="tooltip" class="cursor" data-original-title="Guardar cambios">
+                                        <i class="fas fa-save text-inverse m-r-10"></i>
+                                    </a>
+
+                                    <a class="cursor" (click)="eliminarEnvio(envio)" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i>
+
+                                    </a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="txtTermino.value.length === 0">
+                    <div>
+                        <button (click)="cambiarPagina(-5)" class="btn btn-secondary">Anteriores</button> &nbsp;
+                        <button (click)="cambiarPagina(+5)" class="btn btn-secondary">Sigueintes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

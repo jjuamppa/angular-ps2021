@@ -2,9 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-
-                <input type="text" class="form-control" placeholder="Buscar Solicitud" />
-                <!-- <input type="text" class="form-control" placeholder="Buscar Solicitud" (keyup)="buscar( txtTermino.value )" #txtTermino/> -->
+                <input type="text" class="form-control" placeholder="Buscar Solicitud" (keyup)="buscar( txtTermino.value )" #txtTermino/>
 
             </div>
         </div>
@@ -25,8 +23,8 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Total de Solicitudes ( {{solicitudes.length}} ) </h4>
-                <!-- <h4 class="card-title">Total de usuarios ( {{ totalUsuarios }} ) - {{desde}}</h4> -->
+                <!-- <h4 class="card-title">Total de Solicitudes ( {{solicitudes.length}} ) </h4> -->
+                <h4 class="card-title">Total de solicitud de nuevos comercio ( {{ totalSolicitudes }} ) - {{desde}}</h4>
                 <h6 class="card-subtitle">Solicitudes Ingresadas</h6>
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -35,18 +33,30 @@
                                 <th>Nombre</th>
                                 <th>Correo</th>
                                 <th>Direccion</th>
-                                <th class="w100">Telefono</th>
+                                <th>Telefono</th>
                                 <th class="text-nowrap w100">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <tr *ngFor="let solicitud of solicitudes">
-                                    <td>{{solicitud.nombre}}</td>
-                                    <td>{{solicitud.email}}</td>
-                                    <td>{{solicitud.direccion}}</td>
-                                    <td>{{solicitud.telefono}}</td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Nombre del comercio" [(ngModel)]="solicitud.nombre" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Correo" [(ngModel)]="solicitud.email" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Direccion del comercio" [(ngModel)]="solicitud.direccion" />
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Telefono del comercio" [(ngModel)]="solicitud.telefono" />
+                                    </td>
                                     <td class="text-nowrap text-center">
+                                        <a (click)="guardarCambios(solicitud)" data-toggle="tooltip" class="cursor" data-original-title="Guardar cambios">
+                                            <i class="fas fa-save text-inverse m-r-10"></i>
+                                        </a>
+
                                         <a class="cursor" (click)="eliminarSolicitud(solicitud)" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
                                         <!-- <a class="cursor" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a> -->
                                     </td>
@@ -54,14 +64,14 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- <div *ngIf="txtTermino.value.length === 0"> -->
-                <div>
-                    <!-- <button (click)="cambiarPagina(-5)" class="btn btn-secondary">Anteriores</button> &nbsp; -->
-                    <button class="btn btn-secondary">Anteriores</button> &nbsp;
-                    <!-- <button (click)="cambiarPagina(+5)" class="btn btn-secondary">Sigueintes</button> -->
-                    <button class="btn btn-secondary">Sigueintes</button>
+                <div *ngIf="txtTermino.value.length === 0">
+                    <div>
+                        <button (click)="cambiarPagina(-5)" class="btn btn-secondary">Anteriores</button> &nbsp;
+                        <!-- <button class="btn btn-secondary">Anteriores</button> &nbsp; -->
+                        <button (click)="cambiarPagina(+5)" class="btn btn-secondary">Sigueintes</button>
+                        <!-- <button class="btn btn-secondary">Sigueintes</button> -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

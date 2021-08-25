@@ -30,7 +30,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th class="w100">Avatar</th>
+                                <!-- <th class="w100">Avatar</th> -->
                                 <th>Nombre</th>
                                 <th>Correo</th>
                                 <th class="w140">Role</th>
@@ -40,9 +40,13 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let usuario of usuarios">
-                                <td class="text-center"><img [src]="usuario.imgenUrl" alt="Avatar" class="w100"></td>
-                                <td>{{ usuario.nombre }}</td>
-                                <td>{{ usuario.email }}</td>
+                                <!-- <td class="text-center"><img [src]="usuario.imagenUrl" alt="Avatar" class="w100"></td> -->
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Nombre del usuario" [(ngModel)]="usuario.nombre" />
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="Nombre del usuario" [(ngModel)]="usuario.email" />
+                                </td>
                                 <td>
                                     <select class="form-control" [(ngModel)]="usuario.role" (change)="cambiarRole(usuario)">
                                     <option value="ADMIN_ROLE">Admin</option>
@@ -54,6 +58,9 @@
                                     <span *ngIf="!usuario.google" class="label label-info">Email</span>
                                 </td>
                                 <td class="text-nowrap text-center">
+                                    <a data-toggle="tooltip" class="cursor" data-original-title="Guardar cambios">
+                                        <i class="fas fa-save text-inverse m-r-10"></i>
+                                    </a>
                                     <a class="cursor" (click)="eliminarUsuario(usuario)" data-toggle="tooltip" data-original-title="Borrar"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
                             </tr>

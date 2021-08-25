@@ -32,7 +32,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>ID Usuario</th>
+                                <th>Usuario</th>
                                 <th>Fecha</th>
                                 <th>Monto</th>
                                 <th class="text-nowrap w100">Acciones</th>
@@ -41,7 +41,7 @@
                         <tbody>
                             <tr>
                                 <tr *ngFor="let transaccion of transacciones">
-                                    <td>{{transaccion.usuario._id}}</td>
+                                    <td>{{transaccion.usuario.nombre}}</td>
                                     <td>{{transaccion.fecha | date:'dd-MM-yyyy'}}</td>
                                     <td>AR$ {{transaccion.monto}}</td>
                                     <td class="text-nowrap text-center">

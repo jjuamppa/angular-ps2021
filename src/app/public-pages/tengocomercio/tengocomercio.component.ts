@@ -29,6 +29,7 @@ ngOnInit(): void {
     this.solcitudesServices.crearSolicitud(this.tengoComForm.value)
         .subscribe(resp => {
         console.log(resp);
+        this.tengoComForm.reset();
         Swal.fire(
           'Solicitud Enviada',
           'Su solicitud fue enviada correctamente',

@@ -48,7 +48,7 @@ footer {
 }
 
 .sidebarColor {
-    background-color: #737B80;
+    background-color: #6367F0;
 }
 
 .center {
@@ -75,4 +75,8 @@ footer {
     background-color: gray;
     opacity: 80%;
     border-radius: 15px;
+}
+
+.celeste {
+    background-color: #b8b9f0;
 }
